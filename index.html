@@ -154,13 +154,13 @@ footer{
             <div class="input">
                 <p>Berat Badan</p>
                 <label for="berat badan"></label>
-                <input class="input-kolom" id="berat-badan" type="number"/>
+                <input class="input-kolom" id="berat-badan" type="number" required/>
                 <p>Usia</p>
                 <label for="Usia"></label>
-                <input class="input-kolom" id="Usia" type="number"/>
+                <input class="input-kolom" id="Usia" type="number" required/>
                 <p>Tinggi Badan</p>
                 <label for="Tinggi badan"></label>
-                <input class="input-kolom" id="Tinggi-badan" type="number"/>
+                <input class="input-kolom" id="Tinggi-badan" type="number" required/>
             </div>
 
             <button type="submit"  class="hitung">Hitung BMI</button>
@@ -191,6 +191,7 @@ footer{
             <!-- hasil kalkulasi -->
             <div class="hasil">
                 <p id="hasil"></p>
+                <p id="keterangan"></p>
             </div>
     
             <!-- info dari hasil -->
@@ -219,6 +220,18 @@ footer{
 
     const bmi = beratBadan / (tinggiBadan * tinggiBadan);
     document.getElementById("hasil").innerText = "Hasil BMI:\n\n " + bmi.toFixed(2);
+    if(bmi<18.5){
+        document.getElementById("keterangan").innerText = "katagori: Kurus\nJaga pola makan sehat dan konsultasikan dengan ahli gizi untuk menambah berat badan.";
+    }
+    else if(bmi>=18.5 && bmi<25){
+        document.getElementById("keterangan").innerText = "katagori: Normal\nSelamat! BMI Anda ideal. Tetap jaga pola hidup sehat dan rutin berolahraga.";
+    }
+    else if(bmi>=25 && bmi <30){
+        document.getElementById("keterangan").innerText = "katagori: Over Weight\nMulailah menjaga pola makan dan tingkatkan aktivitas fisik untuk mencapai berat badan ideal.";
+    }
+    else{
+        document.getElementById("keterangan").innerText = "katagori: Obesity\nPertimbangkan untuk berkonsultasi dengan dokter atau ahli gizi untuk perencanaan penurunan berat badan.";
+    }
 }
     </script>
 </body>

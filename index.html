@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* settingan skala besar */
+*{
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: none;
+    
+}
+input,button{
+    cursor: pointer;
+}
+main{
+    display:flex ;
+    justify-content: space-around;
+}
+p{
+    font-size: 16px;
+    line-height: 20px;
+    padding-bottom: 10px;
+}
+section{
+    padding: 40px 60px 40px 40px;
+}
+h1,h2{
+    padding-bottom:20px ;
+}
+
+
+/* section kiri */
+
+    /* bagian artikel atas */
+.utama{
+    text-align:justify;
+    
+}
+    /* bagian form  */
+.form-input{
+    background-color:rgba(234, 231, 231, 0.948);
+    height: 400px;
+    padding: 15px;
+    margin: 15px 0px 15px 0px;
+}
+.pilih{
+    font-weight: bold;
+}
+label{
+    font-weight: bold;
+}
+.jenis{
+    display: flex;
+}
+.jenis label{
+    padding-right: 5px;
+}
+.input p{
+    width: 300px;
+    padding: 20px 0px 3px 0px;
+    font-weight: bold;
+
+    
+}
+.input-kolom{
+    border-radius: 4px;
+    width: 95%;
+    padding: 10px;
+}
+button{
+    border: none;
+    border-radius: 5px;
+    padding:10px;
+    margin-top:39px ;
+    background-color: inherit;
+
+}
+.hitung{
+    background-color:royalblue;
+    color: white;
+}
+.reset{
+   background-color: white;
+}
+
+    /* bagian artikel bawah */
+.setelah p{
+    padding-bottom: 1px;
+}
+
+
+
+
+
+/* section kanan */
+    /* hasil */
+.hasil{
+    display: grid;
+    align-content: center;
+    text-align: center;
+    width:43vw;
+    height: 200px;
+    background-color: rgba(234, 231, 231, 0.948);
+}
+#hasil{
+    justify-self: center;
+    align-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    color: #333;
+}
+h4,.nilai{
+    padding: 20px 0px 0px 0px;
+}
+
+
+/* footer */
+footer{
+    text-align: center;
+}
+
+</style>
+<body>
+    <main>
+        <!-- section form -->
+
+        <!-- bagian artikel atas -->
+    <section>
+        <div class="utama">
+            <header>
+                <h1>Kalkulator BMI</h1>
+            </header>
+    
+            <article>
+                <p>Berat badan ideal adalah impian semua orang. Tidak hanya memiliki bentuk tubuh yang menunjang penampilan, berat badan ideal juga menandakan kondisi tubuh yang sehat. Bagaimana denganmu? Yuk,hitung sekarang di kalkulator BMI.</p>
+            </article>
+        </div>
+
+        <!-- bagian form  -->
+        <form class="form-input" onsubmit="event.preventDefault(); hitungBMI();">
+            <p class="pilih">JENIS KELAMIN</p>
+            <div class="jenis">
+                <label for="jenis-kelamin"><input type="radio" name="Jenis Kelamin" id="pria">Pria</label><br>
+                <label for="jenis-kelamin"><input type="radio" name="Jenis Kelamin" id="wanita">Wanita</label><br>
+            </div>
+
+            <div class="input">
+                <p>Berat Badan</p>
+                <label for="berat badan"></label>
+                <input class="input-kolom" id="berat-badan" type="number"/>
+                <p>Usia</p>
+                <label for="Usia"></label>
+                <input class="input-kolom" id="Usia" type="number"/>
+                <p>Tinggi Badan</p>
+                <label for="Tinggi badan"></label>
+                <input class="input-kolom" id="Tinggi-badan" type="number"/>
+            </div>
+
+            <button type="submit"  class="hitung">Hitung BMI</button>
+             <button class="reset">Reset</button>
+        </form>
+
+        <!-- bagian artikel bawah -->
+        <div>
+            <header>
+                <h2>Keunggulan fitur</h2>
+            </header>
+            <article class="setelah" >
+                    <p >1. Menghitung berat badan</p>
+                    <p >2. Menentukan kategori berat badan ideal atau tidak</p>
+                    <p >3. Mempersiapkan program penurunan berat badan</p>
+            </article>
+        </div>
+
+    </section>
+
+    <!-- section result -->
+     <section>
+        <div>
+            <header>
+                <h1>Hasil</h1>
+            </header>
+    
+            <!-- hasil kalkulasi -->
+            <div class="hasil">
+                <p id="hasil"></p>
+            </div>
+    
+            <!-- info dari hasil -->
+            <article>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </article>
+        </div>
+    
+        </section>
+    </main>
+
+    <!-- footer ini -->
+     <footer>
+        <span>Made by Nafi</span>
+    </footer>
+
+    <script>
+        function hitungBMI() {
+    const beratBadan = parseFloat(document.getElementById("berat-badan").value);
+    const tinggiBadan = parseFloat(document.getElementById("Tinggi-badan").value) / 100;
+
+    if (isNaN(beratBadan) || isNaN(tinggiBadan)) {
+        document.getElementById("hasil").innerText = "Masukkan berat dan tinggi badan yang valid";
+        return;
+    }
+
+    const bmi = beratBadan / (tinggiBadan * tinggiBadan);
+    document.getElementById("hasil").innerText = "Hasil BMI:\n\n " + bmi.toFixed(2);
+}
+    </script>
+</body>
+
+</html>
